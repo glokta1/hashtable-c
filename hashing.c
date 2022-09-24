@@ -52,15 +52,15 @@ void handle_collisions(int option, int key, int address) {
         case 1:
             linear_probing(key, address);
             break;
-        case 2:
-            quad_probing(key, address);
-            break;
-        case 3: 
-            double_hashing(key, address);
-            break;
-        case 4:
-            sep_chaining(key, address);
-            break;
+        // case 2:
+        //     quad_probing(key, address);
+        //     break;
+        // case 3: 
+        //     double_hashing(key, address);
+        //     break;
+        // case 4:
+        //     sep_chaining(key, address);
+        //     break;
     }
 }
 
@@ -68,21 +68,27 @@ int hash(int key) {
     return key % TABLE_SIZE;
 }
 
-// void insert(int key) {
-//     int address = hash(key);
-//     if (ht[address] == -1) {
-//         ht[address] = key;
-//     } else {
-//         handle_collisions(1, key, address);
-//     }
-
-// }
-
 void insert(int key) {
+    int address = hash(key);
+    if (ht[address] == -1) {
+        ht[address] = key;
+    } else {
+        handle_collisions(1, key, address);
+    }
+
 }
 
-void linear_probing(int key, int address) {
+// void insert(int key) {
+// }
 
+void linear_probing(int key, int address) {
+    for (int i = 0; i < TABLE_SIZE; i++) {
+        address = (hash(key) + i) % TABLE_SIZE;
+        if (ht[address] == -1) {
+            ht[address] = key;
+            break;
+        }
+    }
 }
 
 void search(int key) {
