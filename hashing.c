@@ -39,7 +39,14 @@ int main (void) {
 }
 
 void delete(int key) {
+    for (int i = 0; i < TABLE_SIZE; i++) {
+        int address = generate_address(option, key, i);
 
+        if (ht[address] == key) {
+            ht[address] = -1;
+            return;
+        }
+    }
 }
 
 void display() {
@@ -99,6 +106,20 @@ void insert(int key) {
 // }
 
 void search(int key) {
+    int found = 0;
+    for (int i = 0; i < TABLE_SIZE; i++) {
+        int address = generate_address(option, key, i);
+
+        if (ht[address] == key) {
+            found = 1;
+            printf("%d was found!\n", key);
+            break;
+        }
+    }
+
+    if (found == 0) {
+        printf("%d was NOT found\n", key);
+    }
 }
 
 
