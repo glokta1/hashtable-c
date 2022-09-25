@@ -20,9 +20,12 @@ int main(void) {
 
     insert(1);
     insert(2);
+    insert (5);
+    insert (10);
     display();
 }
 
+// display hashtable
 void display() {
     struct Node* p;
     for (int i = 0; i < TABLE_SIZE; i++) {
@@ -34,6 +37,7 @@ void display() {
     }
 }
 
+// inserts elements at beginning of linked list
 void insert(int key) {
     // calculate address of key
     int address = hash(key);
