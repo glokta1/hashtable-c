@@ -48,6 +48,23 @@ void insert(int key) {
     ht[address] = new_node;
 }
 
+void search(int key) {
+    int address = hash(key);
+
+    struct Node* p;
+    int found = 0;
+    for (p = ht[address]; p != NULL; p = p->next) {
+        if (p->value == key) {
+            found = 1;
+            printf("%d was found!\n", key);
+        }
+    }
+
+    if (found == 0) {
+        printf("%d was not found.\n", key);
+    }
+}
+
 
 int hash(int key) {
     return key % TABLE_SIZE;
