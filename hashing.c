@@ -3,11 +3,13 @@
 #include <stdlib.h>
 
 #define TABLE_SIZE 5
+#define DOUBLE_HASH_CONSTANT 3
 
 int ht[TABLE_SIZE];
 int option = 0;
 
-int hash(int key);
+int hash1(int key);
+int hash2(int key);
 void insert(int key);
 void search(int key);
 void delete(int key);
@@ -25,10 +27,12 @@ int main (void) {
     }
 
     // initialize random number generator
-    insert(5);
-    insert(10);
-    insert(15);
-    insert(9);
+    insert(7);
+    insert(12);
+    insert(22);
+    // delete(12);
+    // insert(8);
+    // insert(2);
     display();
 
 }
@@ -53,16 +57,23 @@ void display() {
 int generate_address(int option, int key, int i) {
     switch (option) {
         case 1:
-            return (hash(key)  + i) % TABLE_SIZE;
+            return (hash1(key)  + i) % TABLE_SIZE;
             break;
         case 2:
-            return (hash(key) + i*i) % TABLE_SIZE;
+            return (hash1(key) + i*i) % TABLE_SIZE;
+            break;
+        case 3:
+            return (hash1(key) + i*hash2(key)) % TABLE_SIZE;
             break;
     }
 }
 
-int hash(int key) {
+int hash1(int key) {
     return key % TABLE_SIZE;
+}
+
+int hash2(int key) {
+    return DOUBLE_HASH_CONSTANT - (key % DOUBLE_HASH_CONSTANT);
 }
 
 void insert(int key) {
