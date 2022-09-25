@@ -39,7 +39,6 @@ void display() {
 
 // inserts elements at beginning of linked list
 void insert(int key) {
-    // calculate address of key
     int address = hash(key);
 
     struct Node* new_node = malloc(sizeof(struct Node));
