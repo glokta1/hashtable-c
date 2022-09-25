@@ -17,8 +17,8 @@ void display();
 int generate_address(int option, int key, int i);
 
 int main (void) {
-    printf("Welcome!\n1) Linear probing\n2) Quadratic probing\n3) Double Hashing\n4) Separate Chaining\n");
-    printf("\nSelect a collision resolution method [1-4]: ");
+    printf("Welcome!\n1) Linear probing\n2) Quadratic probing\n3) Double Hashing\n");
+    printf("\nSelect a collision resolution method [1-3]: ");
     scanf("%d", &option);
 
     // initializing arrays with -1 to indicate unoccupied location
