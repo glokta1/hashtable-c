@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 #define TABLE_SIZE 5
 #define DOUBLE_HASH_CONSTANT 3
@@ -25,13 +24,10 @@ int main (void) {
         ht[i] = -1;
     }
 
-    // initialize random number generator
+    // test inputs
     insert(7);
     insert(12);
     insert(22);
-    // delete(12);
-    // insert(8);
-    // insert(2);
     display();
 
 }
